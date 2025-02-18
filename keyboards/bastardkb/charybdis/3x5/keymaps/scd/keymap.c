@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        KC_GRV,  KC_1,    KC_2,     KC_3,   KC_BSLS,    KC_DOT,     KC_LBRC, KC_RBRC, LSFT(KC_LBRC), LSFT(KC_RBRC),
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-      			 XXXXXXX, KC_0,	  MO(LAYER_FUNC),   KC_NO,   KC_NO
+      			 KC_MS_BTN1, KC_0,  MO(LAYER_FUNC),   KC_NO,   KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        G(KC_Z), G(KC_X), G(KC_C),  G(KC_V), KC_NO,     KC_HOME,  KC_PGDN, KC_PGUP, KC_END, KC_NO,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                         KC_NO,   KC_NO,   KC_NO,      MO(LAYER_FUNC), KC_NO
+                         KC_NO,   KC_MS_BTN1,   KC_NO,      MO(LAYER_FUNC), KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -78,11 +78,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭───────────────────-----------──────────────────────────────────────────╮           ╭───────────────────────────────────────────────────────────────----------─╮
        KC_NO, KC_F9,      KC_F10,     KC_F11,	  KC_F12,	           		   KC_NO,       KC_NO,        KC_MS_U,       KC_BSPC, KC_NO,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
-      MS_BTN1,      KC_F5,      KC_F6,      KC_F7,      KC_F8,        	   		   KC_MS_BTN2,	KC_MS_L,      KC_MS_D,      KC_MS_R,        KC_MS_R,
+      KC_MS_BTN1,      KC_F5,      KC_F6,      KC_F7,      KC_F8,        	   		   KC_MS_BTN2,	KC_MS_L,      KC_MS_D,      KC_MS_R,        KC_MS_R,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
       KC_MS_BTN3,   KC_F1,      KC_F2,      KC_F3,      KC_F4,        	   		   KC_MS_BTN1,	KC_LGUI,      KC_LSFT,      KC_LCTL,        KC_LALT,
   // ╰─-----------────────────────────────────────────────────────────────────╯           ╰──----------──────────────────────────────────────────────────────────────╯
-                       KC_NO, KC_NO, KC_NO,             KC_NO, KC_NO
+                       KC_NO, KC_MS_BTN1, KC_MS_BTN2,             KC_NO, KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -98,6 +98,7 @@ enum combos {
     CMDT_TAB,
     CV_MINS,
     QT_BOOT,
+    YP_BOOT,
     GH_COMBO
 };
 
@@ -109,6 +110,7 @@ const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cmdt_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM qt_combo[] = {KC_Q, KC_T, COMBO_END};
+const uint16_t PROGMEM yp_combo[] = {KC_Y, KC_P, COMBO_END};
 const uint16_t PROGMEM gh_combo[] = {KC_G, KC_H, COMBO_END};
 
 // Associate combos with values to send
@@ -120,6 +122,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [CMDT_TAB] = COMBO(cmdt_combo, KC_TAB),
     [CV_MINS] = COMBO(cv_combo, KC_MINS),
     [QT_BOOT] = COMBO(qt_combo, QK_BOOT),
+    [YP_BOOT] = COMBO(yp_combo, QK_BOOT),
     [GH_COMBO] = COMBO(gh_combo, CW_TOGG)
 };
 
@@ -139,4 +142,8 @@ void matrix_scan_user(void) {
     }
 }
 
+void pointing_device_init_user(void) {
+    set_auto_mouse_layer(4);
+    set_auto_mouse_enable(true);
+}
 
