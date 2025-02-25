@@ -66,23 +66,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
        XXXXXXX, KC_KB_MUTE, KC_KB_VOLUME_DOWN, KC_KB_VOLUME_UP, KC_MEDIA_PLAY_PAUSE,           KC_NO, KC_TAB, KC_SPC, KC_BSPC, KC_NO,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_TRNS,   KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,  KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
+       KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI, KC_NO,      KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
        G(KC_Z), G(KC_X), G(KC_C),  G(KC_V), KC_NO,     KC_HOME,  KC_PGDN, KC_PGUP, KC_END, KC_NO,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                         KC_NO,   KC_MS_BTN1,   KC_NO,      MO(LAYER_FUNC), KC_NO
+                         KC_MS_BTN2,   KC_MS_BTN1,   KC_NO,      MO(LAYER_FUNC), KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_FUNC] = LAYOUT(
   // ╭───────────────────-----------──────────────────────────────────────────╮           ╭───────────────────────────────────────────────────────────────----------─╮
-       KC_NO, KC_F9,      KC_F10,     KC_F11,	  KC_F12,	           		   KC_NO,       KC_NO,        KC_MS_U,       KC_BSPC, KC_NO,
+       KC_NO, KC_NO,      KC_NO,     KC_NO,	  KC_NO,	           		           KC_NO,       KC_F9,      KC_F10,     KC_F11,	  KC_F12,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
-      KC_MS_BTN1,      KC_F5,      KC_F6,      KC_F7,      KC_F8,        	   		   KC_MS_BTN2,	KC_MS_L,      KC_MS_D,      KC_MS_R,        KC_MS_R,
+      KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      KC_NO,        	   		   KC_NO,	KC_F5,      KC_F6,      KC_F7,      KC_F8,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
-      KC_MS_BTN3,   KC_F1,      KC_F2,      KC_F3,      KC_F4,        	   		   KC_MS_BTN1,	KC_LGUI,      KC_LSFT,      KC_LCTL,        KC_LALT,
+      KC_MS_BTN3,   KC_NO,      KC_NO,      KC_NO,      KC_NO,        	   		       KC_NO,	 KC_F1,      KC_F2,      KC_F3,      KC_F4,
   // ╰─-----------────────────────────────────────────────────────────────────╯           ╰──----------──────────────────────────────────────────────────────────────╯
-                       KC_NO, KC_MS_BTN1, KC_MS_BTN2,             KC_NO, KC_NO
+                       KC_MS_BTN2, KC_MS_BTN1, TL_UPPR,             TL_LOWR, KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 };
@@ -127,23 +127,23 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 
-// Setup trackball movement settings
-bool trackball_moved = false;
+// // Setup trackball movement settings
+// bool trackball_moved = false;
 
-void trackball_handler(uint8_t layer) {
-    trackball_moved = true;
-}
+// void trackball_handler(uint8_t layer) {
+//     trackball_moved = true;
+// }
 
 void matrix_scan_user(void) {
-    if (trackball_moved) {
-        // Toggle the special layer
-        layer_on(LAYER_FUNC);
-        trackball_moved = false;
-    }
+    // if (trackball_moved) {
+    //     // Toggle the special layer
+    //     layer_on(LAYER_FUNC);
+    //     trackball_moved = false;
+    // }
 }
 
 void pointing_device_init_user(void) {
-    set_auto_mouse_layer(4);
+    set_auto_mouse_layer(LAYER_FUNC);
     set_auto_mouse_enable(true);
 }
 
