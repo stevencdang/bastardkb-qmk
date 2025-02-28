@@ -1,7 +1,7 @@
 #pragma once
 
 // Pick good defaults for enabling homerow modifiers
-#define COMBO_COUNT 9
+#define COMBO_COUNT 11
 
 // Define default 3 layers
 #define TRI_LAYER_LOWER_LAYER 1
