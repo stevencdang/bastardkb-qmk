@@ -1,7 +1,9 @@
 #pragma once
 
 // Pick good defaults for enabling homerow modifiers
-#define COMBO_COUNT 11
+#define COMBO_COUNT 10
+#define COMBO_TERM 75
+
 
 // Define default 3 layers
 #define TRI_LAYER_LOWER_LAYER 1
@@ -12,6 +14,10 @@
 // #define idMovementHook idMouseMovement
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 4
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+
+
 
 // Enable bilateral combinations to make homerow modifers more usable (https://sunaku.github.io/home-row-mods.html)
 /* QMK */

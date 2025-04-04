@@ -38,7 +38,7 @@ enum charybdis_keymap_layers {
 
 // Define custom keycode
 enum custom_keycodes {
-    KC_DRGSCRL = 100,
+    KC_DRGSCRL = SAFE_RANGE,
     KC_SNIPING,
 };
 
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                         KC_ENT, KC_BSPC,   TL_UPPR,      TL_LOWR, KC_SPC
+                         LT(LAYER_FUNC, KC_ENT), KC_BSPC,   LT(LAYER_NAV, KC_ESC),     LT(LAYER_NUM, KC_TAB), KC_SPC
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -73,11 +73,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
        MO(LAYER_FUNC), KC_KB_MUTE, KC_KB_VOLUME_DOWN, KC_KB_VOLUME_UP, KC_MEDIA_PLAY_PAUSE,           KC_NO, KC_TAB, KC_SPC, KC_BSPC, KC_NO,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI, SNIPING_MODE_TOGGLE,      KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
+       KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI, KC_NO,      KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
   // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-       G(KC_Z), G(KC_X), G(KC_C),  G(KC_V), DRAGSCROLL_MODE_TOGGLE,     KC_HOME,  KC_PGDN, KC_PGUP, KC_END, KC_NO,
+       G(KC_Z), G(KC_X), G(KC_C),  G(KC_V), KC_NO,     KC_HOME,  KC_PGDN, KC_PGUP, KC_END, KC_NO,
   // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
-                         KC_MS_BTN2,   KC_MS_BTN1,   KC_NO,      MO(LAYER_FUNC), KC_NO
+                         KC_NO,   KC_NO,   KC_NO,      MO(LAYER_FUNC), KC_NO
   //                   ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -85,11 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭───────────────────-----------──────────────────────────────────────────╮           ╭───────────────────────────────────────────────────────────────----------─╮
        KC_NO, POINTER_DEFAULT_DPI_FORWARD,      POINTER_DEFAULT_DPI_REVERSE,  POINTER_SNIPING_DPI_FORWARD,     POINTER_SNIPING_DPI_REVERSE,	           		           KC_NO,       KC_F9,      KC_F10,     KC_F11,	  KC_F12,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
-      KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      SNIPING_MODE_TOGGLE,        	   		                   DRAGSCROLL_MODE,	KC_F5,      KC_F6,      KC_F7,      KC_F8,
+      KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      SNIPING_MODE_TOGGLE,        	   		                   KC_MS_BTN2,	KC_F5,      KC_F6,      KC_F7,      KC_F8,
   // ├─────────────────────────────────-----------────────────────────────────┤           ├──────────────────────────────────────────────────────────----------──────┤
-      KC_MS_BTN3,   KC_NO,      KC_A,      KC_NO,   DRAGSCROLL_MODE_TOGGLE,        	   		       KC_NO,	 KC_F1,      KC_F2,      KC_F3,      KC_F4,
+      KC_MS_BTN3,   KC_NO,      KC_A,      KC_NO,   DRAGSCROLL_MODE_TOGGLE,        	   		       KC_MS_BTN1,	 KC_F1,      KC_F2,      KC_F3,      KC_F4,
   // ╰─-----------────────────────────────────────────────────────────────────╯           ╰──----------──────────────────────────────────────────────────────────────╯
-                                        KC_MS_BTN2, KC_MS_BTN1, TL_UPPR,                   TL_LOWR, TG(LAYER_BASE)
+                                        KC_MS_BTN2, KC_MS_BTN1, KC_NO,                   KC_NO, TG(LAYER_BASE)
   //                   ╰──────────────────────────────────────────────────────╯           ╰──────────────────────────────────────────────╯
   ),
   
@@ -107,7 +107,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum combos {
     ZX_Q,
     DTSL_P,
-    WE_ENT,
     XC_ESC,
     CMDT_TAB,
     CV_MINS,
@@ -121,7 +120,7 @@ enum combos {
 // Define combos
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM dtsl_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
+// const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cmdt_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
@@ -132,10 +131,10 @@ const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
 const uint16_t PROGMEM xv_combo[] = {KC_X, KC_V, COMBO_END};
 
 // Associate combos with values to send
+// Removed from list [WE_ENT] = COMBO(we_combo, KC_ENT),
 combo_t key_combos[COMBO_COUNT] = {
     [ZX_Q] = COMBO(zx_combo, KC_Q),
     [DTSL_P] = COMBO(dtsl_combo, KC_P),
-    [WE_ENT] = COMBO(we_combo, KC_ENT),
     [XC_ESC] = COMBO(xc_combo, KC_ESC),
     [CMDT_TAB] = COMBO(cmdt_combo, KC_TAB),
     [CV_MINS] = COMBO(cv_combo, KC_MINS),
@@ -147,12 +146,6 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 
-// // Setup trackball movement settings
-// bool trackball_moved = false;
-
-// void trackball_handler(uint8_t layer) {
-//     trackball_moved = true;
-// }
 
 void matrix_scan_user(void) {
     // if (trackball_moved) {
@@ -163,21 +156,24 @@ void matrix_scan_user(void) {
 }
 
 // Function to be called when custom keycode is pressed
-void toggle_dragscroll(void) {
-    // Your custom function code here
-    // For example, send a string
-    bool dragscroll_enabled = charybdis_get_pointer_dragscroll_enabled();
-    charybdis_set_pointer_dragscroll_enabled(dragscroll_enabled);
-}
+// void toggle_dragscroll(void) {
+//     // Your custom function code here
+//     // For example, send a string
+//     bool dragscroll_enabled = charybdis_get_pointer_dragscroll_enabled();
+//     charybdis_set_pointer_dragscroll_enabled(dragscroll_enabled);
+// }
+
+
 
 // Process custom keycode
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_DRGSCRL:
-            if (record->event.pressed) {
-                toggle_dragscroll();
-            }
-            return false; // Skip all further processing of this key
+        // case KC_DRGSCRL:
+        //     if (record->event.pressed) {
+        //         // toggle_dragscroll();
+        //         // set_scrolling = !set_scrolling;
+        //     }
+        //     return false; // Skip all further processing of this key
         case KC_SNIPING:
             if (record->event.pressed) {
                 charybdis_set_pointer_sniping_enabled(!charybdis_get_pointer_sniping_enabled());
