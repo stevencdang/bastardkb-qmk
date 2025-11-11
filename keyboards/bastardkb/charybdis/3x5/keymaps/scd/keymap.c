@@ -129,15 +129,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Declare combos
 enum combos {
     ZX_Q,
-    DTSL_P
+    DTSL_P,
     XC_ESC,
     CMDT_TAB,
     CV_MINS,
     QT_BOOT,
     YP_BOOT,
-    GH_COMBO,
-    ZC_SCROLL,
-    XV_SNIPE,
+    GH_COMBO
+    // ZC_SCROLL,
+    // XV_SNIPE
 };
 
 // Define combos
@@ -150,8 +150,8 @@ const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM qt_combo[] = {KC_Q, KC_T, COMBO_END};
 const uint16_t PROGMEM yp_combo[] = {KC_Y, KC_P, COMBO_END};
 const uint16_t PROGMEM gh_combo[] = {KC_G, KC_H, COMBO_END};
-const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
-const uint16_t PROGMEM xv_combo[] = {KC_X, KC_V, COMBO_END};
+// const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
+// const uint16_t PROGMEM xv_combo[] = {KC_X, KC_V, COMBO_END};
 
 // Associate combos with values to send
 // Removed from list [WE_ENT] = COMBO(we_combo, KC_ENT),
@@ -164,8 +164,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [QT_BOOT] = COMBO(qt_combo, QK_BOOT),
     [YP_BOOT] = COMBO(yp_combo, QK_BOOT),
     [GH_COMBO] = COMBO(gh_combo, CW_TOGG),
-    [ZC_SCROLL] = COMBO(zc_combo, DRAGSCROLL_MODE_TOGGLE),
-    [XV_SNIPE] = COMBO(xv_combo, SNIPING_MODE_TOGGLE),
+    // [ZC_SCROLL] = COMBO(zc_combo, DRAGSCROLL_MODE_TOGGLE),
+    // [XV_SNIPE] = COMBO(xv_combo, SNIPING_MODE_TOGGLE),
 };
 
 
