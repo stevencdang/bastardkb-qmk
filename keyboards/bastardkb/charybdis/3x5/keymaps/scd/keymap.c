@@ -94,13 +94,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_MOUSE] = LAYOUT(
   // ╭─────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────────────╮
-       KC_NO, POINTER_DEFAULT_DPI_FORWARD,      POINTER_DEFAULT_DPI_REVERSE,  POINTER_SNIPING_DPI_FORWARD,     POINTER_SNIPING_DPI_REVERSE,	        KC_NO, KC_NO, KC_NO, KC_NO, TO(LAYER_BASE),   		                  
+       KC_NO, POINTER_DEFAULT_DPI_FORWARD,      POINTER_DEFAULT_DPI_REVERSE,  POINTER_SNIPING_DPI_FORWARD,     POINTER_SNIPING_DPI_REVERSE,	        KC_NO, KC_NO, KC_NO, KC_NO,  KC_P     ,   		                  
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
-      KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      KC_NO,       SNIPING_MODE_TOGGLE, KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT,          
+      KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      KC_G,       KC_H, KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT,          
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
-        KC_NO,   KC_NO,      KC_A,      KC_MS_BTN1,   KC_MS_BTN2,        	   		  KC_MS_BTN1, KC_MS_BTN2, DRGSCRL, SNIPING,   KC_NO,
+        KC_NO,   KC_NO,      KC_A,      KC_MS_BTN1,   KC_MS_BTN2,        	   		  KC_MS_BTN1, KC_MS_BTN2, DRGSCRL, SNIPING,   TO(LAYER_BASE),
   // ╰─────────────────────────────────────────────────────────────────╯ ╰─────────────────────────────────────────────────────────────────────────────────╯
-                                    KC_NO, KC_NO, KC_NO,                      KC_NO, SNIPING_MODE_TOGGLE
+                                    KC_NO, KC_NO, KC_NO,                      DRAG_SCROLL_TOGGLE, SNIPING_MODE_TOGGLE
   //       ╰───────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────────────────────╯
   ),
 
@@ -137,7 +137,9 @@ enum combos {
     ODOT_BOOT,
     GH_COMBO,
     GR_DRAGSCROLL,
-    HP_DRAGSCROLL
+    HP_DRAGSCROLL,
+    MOUSE_GR_DRAGSCROLL,
+    MOUSE_HP_DRAGSCROLL
 };
 
 // Define combos
@@ -152,6 +154,8 @@ const uint16_t PROGMEM odot_combo[] = {KC_O, KC_DOT, COMBO_END};
 const uint16_t PROGMEM gh_combo[] = {KC_G, KC_H, COMBO_END};
 const uint16_t PROGMEM gr_combo[] = {KC_G, KC_R, COMBO_END};
 const uint16_t PROGMEM hp_combo[] = {KC_H, KC_P, COMBO_END};
+const uint16_t PROGMEM mouse_gr_combo[] = {KC_G, POINTER_SNIPING_DPI_FORWARD, COMBO_END};
+const uint16_t PROGMEM mouse_hp_combo[] = {KC_H, KC_P, COMBO_END};
 
 // Associate combos with values to send
 // Removed from list [WE_ENT] = COMBO(we_combo, KC_ENT),
@@ -166,6 +170,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [GH_COMBO] = COMBO(gh_combo, CW_TOGG),
     [GR_DRAGSCROLL] = COMBO(gr_combo, MO_DRGSCRL),
     [HP_DRAGSCROLL] = COMBO(hp_combo, TG_DRGSCRL),
+    [MOUSE_GR_DRAGSCROLL] = COMBO(mouse_gr_combo, MO_DRGSCRL),
+    [MOUSE_HP_DRAGSCROLL] = COMBO(mouse_hp_combo, TG_DRGSCRL),
 };
 
 
