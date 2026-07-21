@@ -1,7 +1,7 @@
 #pragma once
 
 // Pick good defaults for enabling homerow modifiers
-#define COMBO_COUNT 12
+#define COMBO_COUNT 11
 #define COMBO_TERM 75
 
 

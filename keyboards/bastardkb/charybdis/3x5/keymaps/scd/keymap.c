@@ -58,9 +58,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
           LALT_T(KC_A), LCTL_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G,              KC_H, 	RGUI_T(KC_J), RSFT_T(KC_K), RCTL_T(KC_L), RALT_T(KC_QUOT),
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
-          LT(LAYER_MOUSE, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,                 KC_N,    KC_M, KC_COMM,  KC_DOT, LT(LAYER_MOUSE, KC_SLSH),
+          LT(LAYER_MOUSE, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,                 KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
   // ╰─────────────────────────────────────────────────────────────────╯ ╰─────────────────────────────────────────────────────────────────────────────────╯
-            LT(LAYER_MOUSE, KC_ENT), KC_BSPC,   LT(LAYER_NAV, KC_ESC),               LT(LAYER_NUM, KC_TAB), KC_SPC
+            KC_ENT, KC_BSPC,   LT(LAYER_NAV, KC_ESC),               LT(LAYER_NUM, KC_TAB), KC_SPC
   //       ╰───────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────────────────────╯
   ),
 
@@ -98,9 +98,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
       KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,      KC_G,       KC_H, KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT,          
   // ╭─────────────────────────────────────────────────────────────────╮ ╭─────────────────────────────────────────────────────────────────────────────────╮
-        KC_NO,   KC_NO,      KC_A,      KC_MS_BTN1,   KC_MS_BTN2,        	   		  KC_MS_BTN1, KC_MS_BTN2, DRGSCRL, SNIPING,   TO(LAYER_BASE),
+        KC_NO,   KC_NO,      KC_A,      KC_MS_BTN1,   KC_MS_BTN2,        	   		  KC_MS_BTN1, KC_MS_BTN2, KC_NO, KC_NO,   TO(LAYER_BASE),
   // ╰─────────────────────────────────────────────────────────────────╯ ╰─────────────────────────────────────────────────────────────────────────────────╯
-                                    KC_NO, KC_NO, KC_NO,                      DRAGSCROLL_MODE_TOGGLE, SNIPING_MODE_TOGGLE
+                                    KC_NO, KC_NO, KC_NO,                      KC_NO, KC_NO
   //       ╰───────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────────────────────╯
   ),
 
@@ -139,7 +139,6 @@ enum combos {
     GR_DRAGSCROLL,
     HP_DRAGSCROLL,
     MOUSE_GR_DRAGSCROLL,
-    MOUSE_HP_DRAGSCROLL
 };
 
 // Define combos
@@ -155,7 +154,6 @@ const uint16_t PROGMEM gh_combo[] = {KC_G, KC_H, COMBO_END};
 const uint16_t PROGMEM gr_combo[] = {KC_G, KC_R, COMBO_END};
 const uint16_t PROGMEM hp_combo[] = {KC_H, KC_P, COMBO_END};
 const uint16_t PROGMEM mouse_gr_combo[] = {KC_G, POINTER_SNIPING_DPI_FORWARD, COMBO_END};
-const uint16_t PROGMEM mouse_hp_combo[] = {KC_H, KC_P, COMBO_END};
 
 // Associate combos with values to send
 // Removed from list [WE_ENT] = COMBO(we_combo, KC_ENT),
@@ -171,7 +169,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [GR_DRAGSCROLL] = COMBO(gr_combo, MO_DRGSCRL),
     [HP_DRAGSCROLL] = COMBO(hp_combo, TG_DRGSCRL),
     [MOUSE_GR_DRAGSCROLL] = COMBO(mouse_gr_combo, MO_DRGSCRL),
-    [MOUSE_HP_DRAGSCROLL] = COMBO(mouse_hp_combo, TG_DRGSCRL),
 };
 
 
